@@ -1,6 +1,7 @@
 package com.tea505.teaplanner.core.geometry
 
 import com.tea505.teaplanner.core.utils.MathUtils
+import com.tea505.teaplanner.core.utils.MathUtils.epsilonEquals
 
 /**
  * Represents a 2D pose with x, y coordinates and a heading.
@@ -24,6 +25,8 @@ open class Pose : Point {
     constructor(vector2d: Vector, headingTan: Double) : super(vector2d.x, vector2d.y) {
         tangent = Vector(MathUtils.cosine(headingTan), MathUtils.sine(headingTan))
     }
+
+    constructor() : super(0.0, 0.0)
 
     /**
      * Sets the pose to the values of another pose.
@@ -77,9 +80,19 @@ open class Pose : Point {
         return Pose(x * scalar, y * scalar, heading * scalar)
     }
 
+    fun headingVector() = Vector(MathUtils.cosine(heading), MathUtils.sine(heading))
+
+    // Converts to Vector
     fun toVector2d(): Vector {
         return Vector(x, y)
     }
+
+    fun epsilonEquals(other: Pose) {
+        x epsilonEquals other.x && y epsilonEquals other.y && heading epsilonEquals other.heading
+    }
+
+    fun epsilonEqualsHeading(other: Pose) =
+        x epsilonEquals other.x && y epsilonEquals other.y && Angle.normDelta(heading - other.heading) epsilonEquals 0.0
 
     /**
      * Returns a string representation of the pose in the format "x, y, heading".

@@ -31,14 +31,7 @@ class PIDFController(
     private var period: Double = 0.0
 
     /**
-     * Initializes the PIDF controller with the provided gains and setpoint.
-     *
-     * @param kp The proportional gain.
-     * @param ki The integral gain.
-     * @param kd The derivative gain.
-     * @param kf The feed-forward gain.
-     * @param sp The desired setpoint.
-     * @param pv The measured value.
+     * Initializes the PIDF controller with the provided gains and set point.
      */
     init {
         errorVal_p = setPoint - measuredValue
@@ -46,7 +39,7 @@ class PIDFController(
     }
 
     /**
-     * Initializes the PIDF controller with the provided gains and zero setpoint and measured value.
+     * Initializes the PIDF controller with the provided gains and zero set point and measured value.
      *
      * @param kp The proportional gain.
      * @param ki The integral gain.

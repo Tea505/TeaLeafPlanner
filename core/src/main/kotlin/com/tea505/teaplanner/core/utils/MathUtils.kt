@@ -1,5 +1,8 @@
 package com.tea505.teaplanner.core.utils
 
+import java.lang.Math
+import kotlin.math.*
+
 /**
  * Utility class providing mathematical functions.
  */
@@ -12,7 +15,7 @@ object MathUtils {
      * @return the sine of the angle
      */
     fun sine(radians: Double): Double {
-        return Math.sin(radians)
+        return sin(radians)
     }
 
     /**
@@ -22,7 +25,7 @@ object MathUtils {
      * @return the cosine of the angle
      */
     fun cosine(radians: Double): Double {
-        return Math.cos(radians)
+        return cos(radians)
     }
 
     /**
@@ -32,7 +35,7 @@ object MathUtils {
      * @return the tangent of the angle
      */
     fun tangent(radians: Double): Double {
-        return Math.tan(radians)
+        return tan(radians)
     }
 
     /**
@@ -42,7 +45,7 @@ object MathUtils {
      * @return the arcsine of the value
      */
     fun arcSine(value: Double): Double {
-        return Math.asin(value)
+        return asin(value)
     }
 
     /**
@@ -52,7 +55,7 @@ object MathUtils {
      * @return the arccosine of the value
      */
     fun arcCosine(value: Double): Double {
-        return Math.acos(value)
+        return acos(value)
     }
 
     /**
@@ -62,7 +65,7 @@ object MathUtils {
      * @return the arctangent of the value
      */
     fun arcTangent(value: Double): Double {
-        return Math.atan(value)
+        return atan(value)
     }
 
     /**
@@ -83,7 +86,7 @@ object MathUtils {
      * @return the value of base raised to the exponent
      */
     fun power(base: Double, exponent: Int): Double {
-        return Math.pow(base, exponent.toDouble())
+        return base.pow(exponent.toDouble())
     }
 
     /**
@@ -244,4 +247,8 @@ object MathUtils {
     fun hypot(x: Double, y: Double): Double {
         return Math.hypot(x, y)
     }
+
+    const val EPSILON = 1e-6
+
+    infix fun Double.epsilonEquals(other: Double) = absoluteValue(this - other) < EPSILON
 }
