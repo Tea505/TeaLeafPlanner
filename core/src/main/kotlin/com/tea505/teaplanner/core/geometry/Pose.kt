@@ -1,4 +1,4 @@
-package geometry
+package com.tea505.teaplanner.core.geometry
 
 import com.tea505.teaplanner.core.utils.MathUtils
 
@@ -11,6 +11,10 @@ open class Pose : Point {
     var tangent: Vector? = null
 
     constructor(x: Double, y: Double, heading: Double) : super(x, y) {
+        this.heading = MathUtils.normalizeRadians(heading)
+    }
+
+    constructor(x: Int, y: Int, heading: Double) : super(x.toDouble(), y.toDouble()) {
         this.heading = MathUtils.normalizeRadians(heading)
     }
 

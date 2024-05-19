@@ -1,4 +1,4 @@
-package geometry
+package com.tea505.teaplanner.core.geometry
 
 import com.tea505.teaplanner.core.utils.MathUtils
 

@@ -1,6 +1,6 @@
-package localization
+package com.tea505.teaplanner.core.localization
 
-import geometry.Pose
+import com.tea505.teaplanner.core.geometry.Pose
 
 /**
  * Interface for robot localization.

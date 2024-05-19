@@ -1,4 +1,4 @@
-package event
+package com.tea505.teaplanner.core.event
 
 /**
  * Base class for actions that can be performed.
