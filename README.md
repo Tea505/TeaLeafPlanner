@@ -1,4 +1,4 @@
-## Tea Leaf Planner 🍵
+# Tea Leaf Planner 🍵
 
 ## About 🫖
 This is a motion planning library designed specifically for the First Tech Challenge (FTC). It provides tools and utilities to assist FTC teams in creating efficient and precise motion paths for their robots.
@@ -30,15 +30,10 @@ Replacing `TAG` with the latest release or tag. Below is the latest Tag released
 [![](https://jitpack.io/v/Tea505/TeaLeafPlanner.svg)](https://jitpack.io/#Tea505/TeaLeafPlanner)
 
 ### Features 👀
-
-* Path Generation: Easily generate smooth and optimized motion paths for your robot to follow.
-<br>
-* Trajectory Following: Implement controllers to accurately follow generated paths, taking into account factors like velocity, acceleration, and wheel odometry.
-<br>
-* Integration with FTC SDK: Seamlessly integrate the library with the FTC Software Development Kit (SDK) for easy integration into your FTC projects.
-<br>
-* Customization: Fine-tune motion profiles and controllers to suit the specific requirements of your robot and game challenges.
-<br>
+* **Path Generation:** Easily generate smooth and optimized motion paths for your robot to follow using positional or pure pursuit actions.
+* **Action Following:** Implement controllers to accurately follow generated paths, taking into account factors like velocity, acceleration, and wheel odometry.
+* **Integration with FTC SDK:** Seamlessly integrate the library with the FTC Software Development Kit (SDK) for easy integration into your FTC projects.
+* **Customization:** Fine-tune motion profiles and controllers to suit the specific requirements of your robot and game challenges.
 
 ### Getting Started
 To start using the FTC Motion Planning Library in your FTC projects, follow these steps:
