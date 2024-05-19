@@ -1,4 +1,4 @@
-###FTC Motion Planning Library
+FTC Motion Planning Library
 
 About
 This is a motion planning library designed specifically for the First Tech Challenge (FTC). It provides tools and utilities to assist FTC teams in creating efficient and precise motion paths for their robots.
