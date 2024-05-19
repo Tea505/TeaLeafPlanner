@@ -33,8 +33,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-
-dependencies {
-    // leave empty for now
-}

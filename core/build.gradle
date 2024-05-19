@@ -18,30 +18,19 @@ repositories {
     maven { url = 'https://maven.brott.dev/' }
 }
 
-/*
-compileJava {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
- */
 KotlinCompile compileKotlin = (KotlinCompile) tasks.getByName("compileKotlin");
 compileKotlin.getKotlinOptions().setJvmTarget("1.8");
-
 
 tasks.withType(JavaCompile) {
     sourceCompatibility = '1.8'
     targetCompatibility = '1.8'
 }
 
-
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
     implementation "org.apache.commons:commons-math3:3.6.1"
-    // implementation "com.fasterxml.jackson.core:jackson-databind:2.9.6"
-    // implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6"
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.6"
-
 }
 
 test {
