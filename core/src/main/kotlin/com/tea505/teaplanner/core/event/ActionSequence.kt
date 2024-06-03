@@ -5,7 +5,7 @@ package com.tea505.teaplanner.core.event
  */
 class ActionSequence {
 
-    private var hasPerformed: Boolean = false
+    private var hasPerformed: Boolean
     private var actionList = ArrayList<ActionBase>()
     private var actionRunner: Runnable? = null
     private var actionThreading: Thread? = null
@@ -51,9 +51,11 @@ class ActionSequence {
         actionRunner = Runnable {
             for (action in actionList) {
                 action.perform()
+                while (!action.hasPerformed) { }
             }
             hasPerformed = true
         }
+        actionThreading = Thread(actionRunner)
         return this
     }
 
@@ -73,6 +75,13 @@ class ActionSequence {
         if (hasPerformed) {
             perform()
         }
+    }
+
+    /**
+     * Return if the sequence has performed.
+     */
+    fun hasPerformed(): Boolean {
+        return hasPerformed
     }
 
 }

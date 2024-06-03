@@ -1,5 +1,7 @@
 package com.tea505.teaplanner.core.controller
 
+import com.tea505.teaplanner.core.utils.MathUtils
+
 /**
  * Represents a PIDF controller.
  *
@@ -103,8 +105,8 @@ class PIDFController(
      * @return `true` if the controller is at the setpoint, `false` otherwise.
      */
     fun atSetPoint(): Boolean {
-        return Math.abs(errorVal_p) < errorTolerance_p
-                && Math.abs(errorVal_v) < errorTolerance_v
+        return MathUtils.absoluteValue(errorVal_p) < errorTolerance_p
+                && MathUtils.absoluteValue(errorVal_v) < errorTolerance_v
     }
 
     /**

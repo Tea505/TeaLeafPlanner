@@ -3,7 +3,7 @@ package com.tea505.teaplanner.core.geometry
 /**
  * Represents a waypoint with a type, point, and radius.
  */
-class Waypoint(
+class Waypoint (
     val point: Point,
     val radius: Double
 ) {

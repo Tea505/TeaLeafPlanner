@@ -46,7 +46,8 @@ open class Pose : Point {
      * @return the sum of the poses
      */
     fun plus(other: Pose): Pose {
-        return Pose(x + other.x, y + other.y, heading + other.heading)
+        return Pose(x + other.x, y + other.y,
+            MathUtils.normalizeRadians(heading + other.heading))
     }
 
     /**
@@ -80,17 +81,31 @@ open class Pose : Point {
         return Pose(x * scalar, y * scalar, heading * scalar)
     }
 
+    // Convert to Vector heading.
     fun headingVector() = Vector(MathUtils.cosine(heading), MathUtils.sine(heading))
 
-    // Converts to Vector
+    // Converts to Vector.
     fun toVector2d(): Vector {
         return Vector(x, y)
     }
 
+    /**
+     * Compares this Pose object to another Pose object for approximate equality.
+     *
+     * @param other The Pose object to compare against.
+     * @return True if the x, y, and heading properties of both Pose objects are approximately equal, false otherwise.
+     */
     fun epsilonEquals(other: Pose) {
         x epsilonEquals other.x && y epsilonEquals other.y && heading epsilonEquals other.heading
     }
 
+    /**
+     * Compares this Pose object to another Pose object for approximate equality,
+     * with special handling for the heading property to account for angular wrap-around.
+     *
+     * @param other The Pose object to compare against.
+     * @return True if the x, y, and normalized heading properties of both Pose objects are approximately equal, false otherwise.
+     */
     fun epsilonEqualsHeading(other: Pose) =
         x epsilonEquals other.x && y epsilonEquals other.y && Angle.normDelta(heading - other.heading) epsilonEquals 0.0
 
