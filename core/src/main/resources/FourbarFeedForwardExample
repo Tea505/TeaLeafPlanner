@@ -1,0 +1,46 @@
+This is an Example class that showcases how you can use a FourBarFeedForward Controller with a Servo.
+
+public class Example extends LinearOpMode {
+
+    public Servo armServo;
+
+    // Example values
+    public double kV = 0.3;
+    public double kA = 0.1;
+    public double kS = 0.1;
+    public double kG = 0.2;
+
+    // You can use Degrees too but its easier to use radians as its more commonly used for
+    // Angle conversion and measurement.
+
+    // Desired arm setpoint (in radians)
+    public double servoSetPoint = Math.PI / 4; // 45 Degree
+
+    public FourBarFeedForwardController controller;
+
+    @Override
+    public void runOpMode() {
+
+    armServo = hardwareMap.get(Servo.class, "servo");
+
+    controller = new FourBarFeedForward(kV, kA, kS, kG);
+
+    waitForStart();
+
+    while (opModeIsActive()) {
+        double outputFF = controller.calculate(servoSetPoint, 0, 0);
+
+        double servoPos = Angle.radiansToServoPosition(outputFF);
+
+        servoPos = Math.max(0, Math.min(servoPos, 1));
+
+        armServo.setPosition(servoPos);
+
+        // For Debugging
+         telemetry.addData("SetPoint (Radians)", servoSetPoint);
+         telemetry.addData("Feedforward Output (Radians)", outputFF);
+         telemetry.addData("Servo Position", servoPos);
+         telemetry.update();
+        }
+    }
+}
