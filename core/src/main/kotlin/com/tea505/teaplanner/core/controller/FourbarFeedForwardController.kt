@@ -17,15 +17,27 @@ class FourbarFeedForwardController(
     var kG: Double
 ) {
 
+    constructor(kS: Double, kG: Double): this(0.0, 0.0, kS, kG)
+
     /**
      * Calculates the feedforward output for the arm.
      *
      * @param position The desired position (radians).
-     * @param velocity The desired velocity (radians per second).
-     * @param acceleration The desired acceleration (radians per second squared).
+     * @return The feedforward output.
+     */
+    fun calculate(position: Double): Double {
+        return kS * MathUtils.signum(position) + kG * MathUtils.cosine(position);
+    }
+
+    /**
+     * Calculates the feedforward output for the arm with velocity and acceleration.
+     *
+     * @param position The desired position (radians).
+     * @param vel The desired velocity.
+     * @param accel The desired acceleration.
      * @return The feedforward output.
      */
     fun calculate(position: Double, vel: Double, accel: Double): Double {
-        return kS * MathUtils.signum(vel) + kG * MathUtils.cosine(position) + kV * vel + kA * accel
+        return  kS * MathUtils.signum(vel) + kG * MathUtils.cosine(position) + kV * vel + kA * accel
     }
 }

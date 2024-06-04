@@ -1,0 +1,44 @@
+This is an Example class on how you can use Actions, ActionSequences and a AutonomousActionMachine to chain your
+commands to make a precise auto. There will be a lot of reworks, testing and debugging with the sequences as I am still
+working on them but eventually I'll finish as soon as I graduate. For now you can use this as a reference but keep in
+mind that the Action Sequences are still in development.
+
+@Autonomous
+public class Example extends LinearOpMode {
+
+    private boolean busy = false;
+    public RobotHardware robot = RobotHardware.getInstance();
+
+    Action liftUp = () -> robot.setLiftPos(1100, 0.85);
+    Action liftDown = () -> robot.setLiftPos(-10, 0.8);
+    Action busyFalse = () -> busy = false;
+
+    ActionSequence sequence = new ActionSequence()
+            .addAction(liftUp)
+            .addWaitAction(2500)
+            .addAction(liftDown)
+            .build();
+
+    ActionSequence sequence1 = new ActionSequence()
+            .addAction(liftUp)
+            .addWaitAction(2500)
+            .addAction(liftDown)
+            .build();
+
+    AutoActionMachine machine = new AutoActionMachine()
+            .addCommandSequence(sequence)
+            .addCommandSequence(sequence1)
+            .build();
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+
+        robot.initialize(hardwareMap, telemetry);
+
+        waitForStart();
+
+        while (opModeIsActive() && !isStopRequested() && !machine.hasCompleted()) {
+            machine.run(busy);
+        }
+    }
+}

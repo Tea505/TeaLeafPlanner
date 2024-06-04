@@ -100,6 +100,10 @@ object MathUtils {
         return Math.max(a, b)
     }
 
+    fun max(a: Double, b: Double): Double {
+        return Math.max(a, b)
+    }
+
     /**
      * Returns the minimum of two integers.
      *
@@ -108,6 +112,10 @@ object MathUtils {
      * @return the minimum of the two integers
      */
     fun min(a: Int, b: Int): Int {
+        return Math.min(a, b)
+    }
+
+    fun min(a: Double, b: Double): Double {
         return Math.min(a, b)
     }
 
