@@ -26,6 +26,9 @@ open class Pose : Point {
         tangent = Vector(MathUtils.cosine(headingTan), MathUtils.sine(headingTan))
     }
 
+    constructor(point: Point) :
+            this(point.x, point.y, 0.0)
+
     constructor() : super(0.0, 0.0)
 
     /**

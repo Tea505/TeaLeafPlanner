@@ -8,6 +8,8 @@ import kotlin.math.*
  */
 object MathUtils {
 
+    val PI: Double = 3.141592653589793
+
     /**
      * Computes the sine of an angle.
      *
