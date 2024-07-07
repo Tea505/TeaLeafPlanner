@@ -5,5 +5,7 @@ package com.tea505.teaplanner.core.event
  */
 interface Action {
 
+    var hasPerformed: Boolean
+
     fun perform()
 }

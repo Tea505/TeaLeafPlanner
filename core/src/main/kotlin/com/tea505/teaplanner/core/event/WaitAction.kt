@@ -1,34 +1,31 @@
 package com.tea505.teaplanner.core.event
 
+import com.tea505.teaplanner.core.utils.ClockedTimer
+
 /**
  * Class representing a wait action.
  *
  * @property waitMilliseconds the duration to wait in milliseconds
  */
-class WaitAction(var milliseconds: Double): Action {
+class WaitAction(val milliseconds: Double): Action {
 
-    private val baseAction = ActionBase(object : Action {
-        override fun perform() {
+    override var hasPerformed: Boolean = false
 
-        }
-    })
+    // Timer
+    private val timer = ClockedTimer()
 
-    /**
-     * Initializes the wait action.
-     */
     init {
-        baseAction.hasPerformed = false
+        hasPerformed = false
+        timer.reset()
     }
 
     /**
      * Performs the wait action.
      */
     override fun perform() {
-        val startTime: Long = System.nanoTime()
-        val waitDurationNanos = (milliseconds * 1e6).toLong()
-        while ((startTime + waitDurationNanos) > System.nanoTime()) {
-            baseAction.hasPerformed = false
+        while (timer.currentTimeMilliSeconds() < milliseconds) {
+            hasPerformed = false
         }
-        baseAction.hasPerformed = true
+        hasPerformed = true
     }
 }

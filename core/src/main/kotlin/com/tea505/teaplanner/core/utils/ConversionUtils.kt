@@ -49,4 +49,16 @@ object ConversionUtils {
     fun radiansToServoPosition(radians: Double): Double {
         return radians / PI
     }
+
+    fun servoPositionToDegrees(pos: Double): Double {
+        if (pos < 0 || pos > 1) {
+            throw IllegalArgumentException("Normalized position must be between 0 and 1.");
+        }
+        return 0 + (pos * (180 - 0))
+    }
+
+    fun servoPositionToRadians(pos: Double): Double {
+        return MathUtils.degreesToRadians(servoPositionToDegrees(pos))
+    }
+
 }

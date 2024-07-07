@@ -8,8 +8,6 @@ object Angle {
 
     /**
      * Returns [angle] clamped to `[0, 2pi]`.
-     *
-     * @param angle angle measure in radians
      */
     @JvmStatic
     fun norm(angle: Double): Double {
@@ -22,8 +20,6 @@ object Angle {
 
     /**
      * Returns [angleDelta] clamped to `[-pi, pi]`.
-     *
-     * @param angleDelta angle delta in radians
      */
     @JvmStatic
     fun normDelta(angleDelta: Double): Double {

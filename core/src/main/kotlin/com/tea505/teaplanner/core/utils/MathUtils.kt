@@ -10,11 +10,10 @@ object MathUtils {
 
     val PI: Double = 3.141592653589793
 
+    const val EPSILON = 1e-6
+
     /**
      * Computes the sine of an angle.
-     *
-     * @param radians the angle in radians
-     * @return the sine of the angle
      */
     fun sine(radians: Double): Double {
         return sin(radians)
@@ -22,9 +21,6 @@ object MathUtils {
 
     /**
      * Computes the cosine of an angle.
-     *
-     * @param radians the angle in radians
-     * @return the cosine of the angle
      */
     fun cosine(radians: Double): Double {
         return cos(radians)
@@ -32,9 +28,6 @@ object MathUtils {
 
     /**
      * Computes the tangent of an angle.
-     *
-     * @param radians the angle in radians
-     * @return the tangent of the angle
      */
     fun tangent(radians: Double): Double {
         return tan(radians)
@@ -42,9 +35,6 @@ object MathUtils {
 
     /**
      * Computes the arcsine of a value.
-     *
-     * @param value the value
-     * @return the arcsine of the value
      */
     fun arcSine(value: Double): Double {
         return asin(value)
@@ -52,9 +42,6 @@ object MathUtils {
 
     /**
      * Computes the arccosine of a value.
-     *
-     * @param value the value
-     * @return the arccosine of the value
      */
     fun arcCosine(value: Double): Double {
         return acos(value)
@@ -62,9 +49,6 @@ object MathUtils {
 
     /**
      * Computes the arctangent of a value.
-     *
-     * @param value the value
-     * @return the arctangent of the value
      */
     fun arcTangent(value: Double): Double {
         return atan(value)
@@ -72,9 +56,6 @@ object MathUtils {
 
     /**
      * Computes the absolute value of a number.
-     *
-     * @param x the number
-     * @return the absolute value of the number
      */
     fun absoluteValue(x: Double): Double {
         return Math.abs(x)
@@ -82,21 +63,13 @@ object MathUtils {
 
     /**
      * Computes the value of the specified base raised to the specified exponent.
-     *
-     * @param base     the base
-     * @param exponent the exponent
-     * @return the value of base raised to the exponent
      */
     fun power(base: Double, exponent: Int): Double {
         return base.pow(exponent.toDouble())
     }
 
     /**
-     * Returns the maximum of two integers.
-     *
-     * @param a the first integer
-     * @param b the second integer
-     * @return the maximum of the two integers
+     * Returns the maximum of two Integers and two Doubles.
      */
     fun max(a: Int, b: Int): Int {
         return Math.max(a, b)
@@ -107,11 +80,7 @@ object MathUtils {
     }
 
     /**
-     * Returns the minimum of two integers.
-     *
-     * @param a the first integer
-     * @param b the second integer
-     * @return the minimum of the two integers
+     * Returns the minimum of two integers and two doubles
      */
     fun min(a: Int, b: Int): Int {
         return Math.min(a, b)
@@ -123,9 +92,6 @@ object MathUtils {
 
     /**
      * Returns the signum function of a distance.
-     *
-     * @param distance the distance as a double
-     * @return the signum function of the distance
      */
     fun signum(distance: Double): Double {
         return Math.signum(distance)
@@ -133,9 +99,6 @@ object MathUtils {
 
     /**
      * Returns the signum function of a distance.
-     *
-     * @param distance the distance as a float
-     * @return the signum function of the distance
      */
     fun signum(distance: Float): Float {
         return Math.signum(distance)
@@ -143,9 +106,6 @@ object MathUtils {
 
     /**
      * Converts an angle measured in degrees to radians.
-     *
-     * @param degrees the angle in degrees
-     * @return the angle in radians
      */
     fun degreesToRadians(degrees: Double): Double {
         return Math.toRadians(degrees)
@@ -153,9 +113,6 @@ object MathUtils {
 
     /**
      * Converts an angle measured in radians to degrees.
-     *
-     * @param radians the angle in radians
-     * @return the angle in degrees
      */
     fun radiansToDegrees(radians: Double): Double {
         return Math.toDegrees(radians)
@@ -163,9 +120,6 @@ object MathUtils {
 
     /**
      * Normalizes an angle measured in degrees to the range [0, 360).
-     *
-     * @param degrees the angle in degrees
-     * @return the normalized angle in degrees
      */
     fun normalizeDegrees(degrees: Double): Double {
         var normalized = degrees % 360
@@ -177,9 +131,6 @@ object MathUtils {
 
     /**
      * Normalizes an angle measured in radians to the range [0, 2π).
-     *
-     * @param radians the angle in radians
-     * @return the normalized angle in radians
      */
     fun normalizeRadians(radians: Double): Double {
         var normalized = radians % (2 * Math.PI)
@@ -191,10 +142,6 @@ object MathUtils {
 
     /**
      * Computes the angular distance between two angles measured in radians.
-     *
-     * @param start the start angle in radians
-     * @param end   the end angle in radians
-     * @return the angular distance between the angles
      */
     fun getRadRotDist(start: Double, end: Double): Double {
         var difference = (end - start + Math.PI) % (2 * Math.PI) - Math.PI
@@ -206,10 +153,6 @@ object MathUtils {
 
     /**
      * Computes the angular distance between two angles measured in degrees.
-     *
-     * @param start the start angle in degrees
-     * @param end   the end angle in degrees
-     * @return the angular distance between the angles
      */
     fun getRotDist(start: Double, end: Double): Double {
         return getRadRotDist(start, end)
@@ -217,10 +160,6 @@ object MathUtils {
 
     /**
      * Computes the factorial of a non-negative integer.
-     *
-     * @param n the non-negative integer
-     * @return the factorial of the integer
-     * @throws IllegalArgumentException if the input is negative
      */
     fun factorial(n: Int): Long {
         if (n < 0) {
@@ -235,10 +174,6 @@ object MathUtils {
 
     /**
      * Computes the square root of a number.
-     *
-     * @param x the number
-     * @return the square root of the number
-     * @throws IllegalArgumentException if the number is negative
      */
     fun sqrt(x: Double): Double {
         if (x < 0) {
@@ -249,16 +184,19 @@ object MathUtils {
 
     /**
      * Computes the hypotenuse of a right-angled triangle.
-     *
-     * @param x the length of one side of the triangle
-     * @param y the length of the other side of the triangle
-     * @return the length of the hypotenuse
      */
     fun hypot(x: Double, y: Double): Double {
         return Math.hypot(x, y)
     }
 
-    const val EPSILON = 1e-6
-
     infix fun Double.epsilonEquals(other: Double) = absoluteValue(this - other) < EPSILON
+
+    /**
+     * Clip the number if it is less than min or greater than max.
+     */
+    fun clip(number: Double, min: Double, max: Double): Double {
+        if (number < min) return min
+        if (number > max) return max
+        return number
+    }
 }

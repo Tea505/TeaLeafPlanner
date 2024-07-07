@@ -1,44 +1,37 @@
 package com.tea505.teaplanner.core.utils
 
 /**
- * Simple timer class for measuring elapsed time in seconds.
+ * Simple timer class for measuring elapsed time in seconds or milliseconds.
  */
 class ClockedTimer {
 
     /**
      * Previous time recorded by the timer.
      */
-    var prevTime: Double
+    var prevTime: Long = 0
 
-    /**
-     * Initializes the timer with the current time.
-     */
     init {
-        this.prevTime = getSeconds()
-    }
-
-    /**
-     * Returns the elapsed time since the last reset or initialization.
-     *
-     * @return the elapsed time in seconds
-     */
-    fun currentTime(): Double {
-        return getSeconds() - prevTime
+        reset()
     }
 
     /**
      * Resets the timer by updating the previous time to the current time.
      */
     fun reset() {
-        this.prevTime = currentTime()
+        this.prevTime = System.currentTimeMillis()
     }
 
     /**
      * Returns the current time in seconds since the epoch.
-     *
-     * @return the current time in seconds
      */
-    fun getSeconds(): Double {
-        return System.currentTimeMillis() / 1000.0
+    fun currentTimeSeconds(): Double {
+        return currentTimeMilliSeconds() / 1000.0
+    }
+
+    /**
+     * Returns the current time in milliseconds.
+     */
+    fun currentTimeMilliSeconds(): Long {
+        return System.currentTimeMillis() - prevTime
     }
 }

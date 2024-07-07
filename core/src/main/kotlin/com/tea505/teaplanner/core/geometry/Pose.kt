@@ -33,8 +33,6 @@ open class Pose : Point {
 
     /**
      * Sets the pose to the values of another pose.
-     *
-     * @param other the other pose
      */
     fun set(other: Pose) {
         x = other.x
@@ -44,9 +42,6 @@ open class Pose : Point {
 
     /**
      * Returns the sum of this pose and another pose.
-     *
-     * @param other the other pose
-     * @return the sum of the poses
      */
     fun plus(other: Pose): Pose {
         return Pose(x + other.x, y + other.y,
@@ -55,9 +50,6 @@ open class Pose : Point {
 
     /**
      * Returns the difference between this pose and another pose.
-     *
-     * @param other the other pose
-     * @return the difference between the poses
      */
     fun minus(other: Pose): Pose {
         return Pose(x - other.x, y - other.y,
@@ -66,9 +58,6 @@ open class Pose : Point {
 
     /**
      * Returns the division of this pose by another pose.
-     *
-     * @param other the other pose
-     * @return the division of the poses
      */
     fun div(other: Pose): Pose {
         return Pose(x / other.x, y / other.y, heading / other.heading)
@@ -76,9 +65,6 @@ open class Pose : Point {
 
     /**
      * Returns a new pose by multiplying this pose by a scalar value.
-     *
-     * @param scalar the scalar value
-     * @return the new pose
      */
     override fun mult(scalar: Double): Pose {
         return Pose(x * scalar, y * scalar, heading * scalar)
@@ -94,9 +80,6 @@ open class Pose : Point {
 
     /**
      * Compares this Pose object to another Pose object for approximate equality.
-     *
-     * @param other The Pose object to compare against.
-     * @return True if the x, y, and heading properties of both Pose objects are approximately equal, false otherwise.
      */
     fun epsilonEquals(other: Pose) {
         x epsilonEquals other.x && y epsilonEquals other.y && heading epsilonEquals other.heading
@@ -105,17 +88,12 @@ open class Pose : Point {
     /**
      * Compares this Pose object to another Pose object for approximate equality,
      * with special handling for the heading property to account for angular wrap-around.
-     *
-     * @param other The Pose object to compare against.
-     * @return True if the x, y, and normalized heading properties of both Pose objects are approximately equal, false otherwise.
      */
     fun epsilonEqualsHeading(other: Pose) =
         x epsilonEquals other.x && y epsilonEquals other.y && Angle.normDelta(heading - other.heading) epsilonEquals 0.0
 
     /**
      * Returns a string representation of the pose in the format "x, y, heading".
-     *
-     * @return a string representation of the pose
      */
     override fun toString(): String {
         return "$x, $y, $heading"

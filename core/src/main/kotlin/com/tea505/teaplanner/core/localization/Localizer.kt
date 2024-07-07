@@ -13,17 +13,7 @@ interface Localizer {
     var poseEstimate: Pose
 
     /**
-     * Sets the estimated pose of the robot.
-     *
-     * @param pose the estimated pose
-     */
-    // Apparently this gives an error in logs.
-    // fun setPoseEstimate(pose: Pose)
-
-    /**
      * Returns the positions of the tracking wheels.
-     *
-     * @return the positions of the tracking wheels
      */
     fun getWheelPositions(): List<Double>
 
@@ -31,4 +21,9 @@ interface Localizer {
      * Updates the localization based on sensor inputs.
      */
     fun update()
+
+    /**
+     * Retrieves the Pose.
+     */
+    fun getPose(): Pose
 }
