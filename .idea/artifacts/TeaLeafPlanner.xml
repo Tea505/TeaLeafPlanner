@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="TeaLeafPlanner">
+    <output-path>$PROJECT_DIR$/out/artifacts/TeaLeafPlanner</output-path>
+    <root id="archive" name="TeaLeafPlanner.jar" />
+  </artifact>
+</component>
