@@ -1,0 +1,7 @@
+
+        val startTime: Long = System.nanoTime()
+        val waitDurationNanos = (milliseconds * 1e6).toLong()
+        while ((startTime + waitDurationNanos) > System.nanoTime()) {
+            baseAction.hasPerformed = false
+        }
+        baseAction.hasPerformed = true
