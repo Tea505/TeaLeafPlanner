@@ -31,9 +31,6 @@ The Kinematics module deals with the movement and dynamics of mechanisms.
 ### Localization
 The Localization module handles the determination of the mechanism's position and orientation.
 
-### Path
-The Path module is responsible for defining and managing paths for the mechanism to follow.
-
 ### Profile
 The Profile module involves creating and managing motion profiles for smooth and efficient movement.
 

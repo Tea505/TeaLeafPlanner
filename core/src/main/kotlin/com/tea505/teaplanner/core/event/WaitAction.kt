@@ -9,7 +9,7 @@ import com.tea505.teaplanner.core.utils.ClockedTimer
  */
 class WaitAction(val milliseconds: Double): Action {
 
-    override var hasPerformed: Boolean = false
+    var hasPerformed: Boolean = false
 
     // Timer
     private val timer = ClockedTimer()

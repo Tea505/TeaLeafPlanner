@@ -5,7 +5,7 @@ package com.tea505.teaplanner.core.event
  */
 class ActionBase(var action: Action): Action {
 
-    override var hasPerformed = false
+    var hasPerformed = false
 
     /**
      * Performs the action and sets the hasPerformed flag to true.
