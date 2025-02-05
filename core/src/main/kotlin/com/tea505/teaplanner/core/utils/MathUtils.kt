@@ -61,6 +61,11 @@ object MathUtils {
         return atan(value)
     }
 
+    @JvmStatic
+    fun arcTangent2(y: Double, x: Double): Double {
+        return atan2(y, x)
+    }
+
     /**
      * Computes the absolute value of a number.
      */
@@ -123,7 +128,7 @@ object MathUtils {
      * Converts an angle measured in degrees to radians.
      */
     @JvmStatic
-    open fun degreesToRadians(degrees: Double): Double {
+    fun degreesToRadians(degrees: Double): Double {
         return Math.toRadians(degrees)
     }
 

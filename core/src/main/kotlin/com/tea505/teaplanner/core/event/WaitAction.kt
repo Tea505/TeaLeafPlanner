@@ -27,5 +27,9 @@ class WaitAction(val milliseconds: Double): Action {
             hasPerformed = false
         }
         hasPerformed = true
+
+        if (this.hasPerformed) {
+            timer.reset()
+        }
     }
 }

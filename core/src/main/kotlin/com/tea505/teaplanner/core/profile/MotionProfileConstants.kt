@@ -2,7 +2,7 @@ package com.tea505.teaplanner.core.profile
 
 import com.tea505.teaplanner.core.utils.MathUtils
 
-class MotionProfileConstants @JvmOverloads constructor(
+class MotionProfileConstants (
     velocity: Double,
     acceleration: Double,
     deceleration: Double

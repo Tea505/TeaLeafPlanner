@@ -1,13 +1,31 @@
 package com.tea505.teaplanner.core.utils
 
-import kotlin.math.PI
-
 /**
  * Utility class for various unit conversions.
  */
 object ConversionUtils {
 
     /** Length Conversions  **/
+
+    @JvmStatic
+    fun millimetersToCentimeters(millimeters: Double): Double {
+        return millimeters / 10
+    }
+
+    @JvmStatic
+    fun centimetersToMillimeters(centimeters: Double): Double {
+        return centimeters * 10
+    }
+
+    @JvmStatic
+    fun millimetersToInches(millimeters: Double): Double {
+        return millimeters / 25.4
+    }
+
+    @JvmStatic
+    fun inchesToMillimeters(inches: Double): Double {
+        return inches * 25.4
+    }
 
     @JvmStatic
     fun inchesToCentiMeters(inches: Double): Double {
@@ -19,56 +37,34 @@ object ConversionUtils {
         return centimeters / 2.54
     }
 
-    @JvmStatic
-    fun inchesToFeet(inches: Double): Double {
-        return inches / 12
-    }
-
-    @JvmStatic
-    fun centimetersToFeet(centimeters: Double): Double {
-        return centimeters / 30.48
-    }
-
-    @JvmStatic
-    fun feetToMeters(feet: Double): Double {
-        return feet * 0.3048
-    }
-
-    @JvmStatic
-    fun metersToFeet(meters: Double): Double {
-        return meters / 0.3048
-    }
-
-    // REMEMBER IF USING A REGULAR SERVO UR RANGE IS 0 TO 180 DEGREES.
-    // HOWEVER, A SMART REV SERVO'S RANGE IS 0 to 270 DEGREES.
-    // Despite the servo configured the positional range will always be 0 to 1.
     /**
      * Convert degrees to servo position (0 to 1 range)
      */
     @JvmStatic
-    fun degreesToServoPosition(degrees: Double): Double {
-        return degrees / 180.0
+    fun degreesToServoPosition(degrees: Double, angleRange: Double): Double {
+        return degrees / angleRange
     }
 
     /**
      * Convert radians to servo position (0 to 1 range)
      */
     @JvmStatic
-    fun radiansToServoPosition(radians: Double): Double {
-        return radians / PI
+    fun radiansToServoPosition(radians: Double, angleRange: Double): Double {
+        val degrees = MathUtils.radiansToDegrees(radians)
+        return degreesToServoPosition(degrees, angleRange)
     }
 
     @JvmStatic
-    fun servoPositionToDegrees(pos: Double): Double {
-        if (pos < 0 || pos > 1) {
-            throw IllegalArgumentException("Normalized position must be between 0 and 1.");
+    fun servoPositionToDegrees(Position: Double, angleRange: Double): Double {
+        if (Position < 0 || Position > 1) {
+            throw IllegalArgumentException("Position must be between 0 and 1.");
         }
-        return 0 + (pos * (180 - 0))
+        return Position * angleRange
     }
 
     @JvmStatic
-    fun servoPositionToRadians(pos: Double): Double {
-        return MathUtils.degreesToRadians(servoPositionToDegrees(pos))
+    fun servoPositionToRadians(Position: Double, angleRange: Double): Double {
+        return MathUtils.degreesToRadians(servoPositionToDegrees(Position, angleRange))
     }
 
 }

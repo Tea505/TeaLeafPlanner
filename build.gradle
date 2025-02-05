@@ -5,8 +5,7 @@ configurations {
 buildscript {
 
     ext {
-        kotlin_version = '1.5.21' // Replace with the desired Kotlin version
-        // Preferably keep this at 1.5.21 as its compatible with the FTC SDK
+        kotlin_version = '1.8.10' // Replace with the desired Kotlin version
     }
 
     repositories {
@@ -15,7 +14,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath 'com.android.tools.build:gradle:8.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
